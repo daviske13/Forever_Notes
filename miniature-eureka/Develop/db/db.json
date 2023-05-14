@@ -1,0 +1,25 @@
+[
+    {
+        "title":"Test Title",
+        "text":"Test text"
+    }
+]
+
+const fs = require("fs");
+const path = require("path");
+
+const dbFilePath = path.join(__dirname, "db", "db.json");
+
+// read notes from db.json file
+function getNotes() {
+    const notesData = fs.readFileSync(dbFilePath);
+    return JSON.parse(notesData);
+}
+
+// write notes to db.json file
+function writeNotes(notes) {
+    const notesData = JSON.stringify(notes, null, 2);
+    fs.writeFileSync(dbFilePath, notesData);
+}
+
+
